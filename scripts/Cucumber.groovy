@@ -12,7 +12,7 @@ target(cucumber: "Runs cucumber against all the features in the 'features' direc
 
     def runTests = {
         //todo: move step definitions into the test/cucumber folder and use spring to find them:  objectFactory: 'SpringFactory'
-        "run-cucumber"(args: "--color --format pretty --format junit --out target/junit-report --guess \"${pathToFeatures}\"", clonevm: true, failonerror: false) {
+        "run-cucumber"(args: "--color --format pretty --format junit --out target/junit-report --guess \"${pathToFeatures}\"", clonevm: true, failonerror: true, jvmargs:"-Xms768m -Xmx1024m -XX:PermSize=512m -XX:MaxPermSize=1024m") {
             classpath {
                 path(refid:"jruby.classpath")
             }
